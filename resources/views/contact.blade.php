@@ -3,4 +3,8 @@
     <p>
         This is the contact page.
     </p>
+
+    <x-card>
+        Placeholder for contact form
+    </x-card>
 </x-layout>

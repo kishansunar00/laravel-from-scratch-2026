@@ -5,13 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title }}</title>
-    <style>
-        a {
-            color: brown;
-            text-decoration: none;
-            margin-right: 10px;
-        }
-    </style>
+    
+    @vite('resources/css/app.css')
 </head>
 <body>
     <nav>
