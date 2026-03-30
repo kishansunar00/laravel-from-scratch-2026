@@ -7,4 +7,15 @@
     <div>
         {!! $html !!} <!-- is used to render the HTML as plain text -->
     </div>
+
+    @if (count($ideas) > 0)
+        <div>
+            <h2>Ideas</h2>
+            <ul>
+                @foreach ($ideas as $idea)
+                    <li>{{ $idea }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 </x-layout>
