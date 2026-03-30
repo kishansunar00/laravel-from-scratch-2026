@@ -9,3 +9,7 @@ Route::view('/', 'welcome', [
 ]);
 Route::view('/about', 'about');
 Route::view('/contact', 'contact');
+Route::view('/idea', 'idea');
+Route::post('/ideas', function () {
+    dd(request()->all());
+});
