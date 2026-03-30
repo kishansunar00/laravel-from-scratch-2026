@@ -11,11 +11,17 @@ Route::get('/', function () {
     ];
     return view('welcome', $data);
 });
+
 Route::view('/about', 'about');
 Route::view('/contact', 'contact');
 Route::view('/idea', 'idea');
+
 Route::post('/ideas', function () {
     $idea = request('idea');
     session()->push('ideas', $idea);
+    return redirect('/');
+});
+Route::get('/delete-ideas', function () {
+    session()->forget('ideas');
     return redirect('/');
 });
