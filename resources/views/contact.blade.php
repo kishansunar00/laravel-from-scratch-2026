@@ -4,7 +4,7 @@
         This is the contact page.
     </p>
 
-    <x-card>
+    <x-card class="mt-20">
         Placeholder for contact form
     </x-card>
 </x-layout>
