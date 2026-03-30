@@ -8,12 +8,12 @@
         {!! $html !!} <!-- is used to render the HTML as plain text -->
     </div>
 
-    @if (count($ideas) > 0)
-        <div>
+    @if ($ideas->count())
+        <div class="mt-4 mb-5">
             <h2>Ideas</h2>
-            <ul>
+            <ul class="list-disc list-inside">
                 @foreach ($ideas as $idea)
-                    <li>{{ $idea }}</li>
+                    <li>{{ $idea->description }}</li>
                 @endforeach
             </ul>
         </div>

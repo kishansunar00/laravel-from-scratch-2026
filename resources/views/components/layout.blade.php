@@ -15,7 +15,7 @@
         <a href="/contact">Contact</a>
         <a href="/idea">Idea</a>
     </nav>
-    <main>
+    <main class="container mx-auto px-4 py-8">
         {{ $slot }}
     </main>
 </body>
