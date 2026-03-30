@@ -4,14 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Idea;
 
 Route::get('/', function () {
-    // $ideas = Idea::where('state', 'pending')->get(); // Eloquent ORM
-    $ideas = Idea::all(); // Eloquent ORM
-
     $data = [
         'greeting' => 'Hello',
         'person' => request('name', 'Buddy!'),
-        'html' => '<strong>Bold</strong>',
-        'ideas' => $ideas,
+        'html' => '<strong>Bold</strong>'
     ];
 
     return view('welcome', $data);
@@ -19,7 +15,15 @@ Route::get('/', function () {
 
 Route::view('/about', 'about');
 Route::view('/contact', 'contact');
-Route::view('/idea', 'idea');
+Route::get('/idea', function () {
+    // $ideas = Idea::where('state', 'pending')->get(); // Eloquent ORM
+    $ideas = Idea::query()
+        ->when(request('state'), function ($query, $state) {
+            $query->where('state', $state);
+        })
+        ->get();
+    return view('idea', compact('ideas'));
+});
 
 Route::post('/ideas', function () {
     $idea = request('idea');
@@ -27,9 +31,9 @@ Route::post('/ideas', function () {
         'description' => $idea,
         'state' => 'pending',
     ]);
-    return redirect('/');
+    return redirect('/idea');
 });
 Route::get('/delete-ideas', function () {
-    session()->forget('ideas');
-    return redirect('/');
+    Idea::truncate();
+    return redirect('/idea');
 });
